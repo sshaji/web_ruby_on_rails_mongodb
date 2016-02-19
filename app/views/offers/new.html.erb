@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%= render :partial => "shared/meta" %>
+  <title>Offer</title>
+  <%= render :partial => "shared/css" %>
+</head>
+<body>
+<div class="container">
+  <%= render :partial => "shared/header" %>
+  <div class="panel panel-default">
+    <div class="panel-heading">New Offer</div>
+    <div class="panel-body">
+      <%= form_for @offer, :url => {:action => "create"} do |f| %>
+          <label>User</label>
+          <p><%= f.collection_select :user_id, User.all, :_id, :first_name, prompt: true %></p>
+          <label>Offer Details</label>
+          <p><%= f.text_area 'offerdetails', {:class => "form-control"} %></p>
+          <hr/>
+          <% if @offer.errors.any? %>
+            <span class="label label-danger">
+                <% @offer.errors.full_messages.each do |msg| %>
+                    <%= msg %><br>
+                <% end %>
+            </span><br>
+          <% end %>
+          <%= f.submit "Save changes", {:class => "btn btn-success"} %>
+          <%= link_to 'Cancel', {:action => 'index'}, {:class => "btn btn-warning"} %>
+      <% end %>
+    </div>
+  </div>
+  <%= render :partial => "shared/footer" %>
+</div>
+</body>
+</html>

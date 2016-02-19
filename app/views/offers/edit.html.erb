@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%= render :partial => "shared/meta" %>
+  <title>Offer</title>
+  <%= render :partial => "shared/css" %>
+</head>
+<body>
+<div class="container">
+  <%= render :partial => "shared/header" %>
+  <div class="panel panel-default">
+    <div class="panel-heading">Edit Offer</div>
+    <div class="panel-body">
+      <%= form_for @offer, :url => {:action => "update", :id => @offer} do |f| %>
+          <label>User</label>
+          <p><%= @offer.user.first_name %> <%= @offer.user.last_name %></p>
+          <label>Offer Details</label>
+          <p><%= f.text_area 'offerdetails', {:class => "form-control"} %></p>
+          <hr/>
+          <% if @offer.errors.any? %>
+            <span class="label label-danger">
+                <% @offer.errors.full_messages.each do |msg| %>
+                    <%= msg %><br>
+                <% end %>
+            </span><br>
+          <% end %>
+          <%= f.submit "Save changes", {:class => "btn btn-success"} %>
+          <%= link_to 'Cancel', {:action => 'index'}, {:class => "btn btn-warning"} %>
+          <%= link_to "Delete", @offer, :class => "btn btn-danger",
+                      method: 'delete',
+                      data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </div>
+  </div>
+  <%= render :partial => "shared/footer" %>
+</div>
+</body>
+</html>
+
+
+

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%= render :partial => "shared/meta" %>
+  <title>Offers - Home</title>
+  <%= render :partial => "shared/css" %>
+</head>
+<body>
+<div class="container">
+  <%= render :partial => "shared/header" %>
+  <div class="panel panel-default">
+    <div class="panel-heading">Offers</div>
+    <div class="panel-body">
+      <%= link_to "Add new Offer", {:action => 'new'}, {:class => "btn btn-primary"} %>
+      <br><br>
+      <table class="table table-striped">
+        <% @offers.each do |c| %>
+            <tr>
+              <td><%= link_to c.offerdetails, {:action => 'edit', :id => c.id} -%></td>
+              <td><%= c.user.first_name -%> <%= c.user.last_name -%></td>
+              <td><%= c.user.email -%></td>
+            </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+  <%= render :partial => "shared/footer" %>
+</div>
+</body>
+</html>

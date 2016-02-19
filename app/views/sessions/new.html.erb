@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%= render :partial => "shared/meta" %>
+  <title>Login</title>
+  <%= render :partial => "shared/css" %>
+</head>
+<body>
+<div class="container">
+  <br>
+  <div class="jumbotron">
+    <h1>Offers</h1>
+    <p>Ruby on Rails application using MySQL and Bootstrap CSS</p>
+  </div>
+  <h4 class="form-signin-heading">Please sign in..</h4>
+  <div style="width: 250px">
+    <%= form_for(:session, url: login_path) do |f| %>
+
+        <%= f.label :username %>
+        <%= f.text_field :username, class: 'form-control' %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control' %>
+
+        <div class="checkbox">
+          <label>
+            <%= f.check_box :remember %>
+            Remember me
+          </label>
+        </div>
+
+        <%= f.submit "Log in", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+</body>
+</html>
