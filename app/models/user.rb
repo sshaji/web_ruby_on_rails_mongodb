@@ -1,14 +1,15 @@
 class User
   include Mongoid::Document
+
   store_in collection: "users"
   has_many :offers
 
-  field :_id, type: String
-  field :password, type: String
-  field :first_name, type: String
-  field :last_name, type: String
-  field :enabled, type: String
-  field :email, type: String
+  field :_id,             type: String
+  field :password,        type: String
+  field :first_name,      type: String
+  field :last_name,       type: String
+  field :enabled,         type: String
+  field :email,           type: String
   field :remember_digest, type: String
 
   validates_presence_of :_id
